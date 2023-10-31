@@ -1,4 +1,7 @@
-import "dotenv/config";
+const dontenv = require("dotenv");
+
+dontenv.config();
+
 import fetch from "node-fetch";
 import {
   ClientBuilder,

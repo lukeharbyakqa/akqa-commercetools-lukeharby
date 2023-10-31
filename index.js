@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { ctpClient } from "./BuildClient";
+import { ctpClient } from "./BuildClient.js";
 import { ApiRoot, createApiBuilderFromCtpClient } from "@commercetools/platform-sdk";
 
 const projectKey = process.env.PROJECT_KEY;
