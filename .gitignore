@@ -15,4 +15,7 @@ npm-debug.log
 .env
 
 # docs
-/docs
+**/docs
+
+#client
+**/client

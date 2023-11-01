@@ -2,8 +2,9 @@
   "name": "commerce-tools",
   "version": "1.0.0",
   "description": "Commerce Tools Example",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
+    "start": "node ./src/index.js",
     "test": "test"
   },
   "type": "module",
@@ -22,7 +23,6 @@
     "@commercetools/sdk-client-v2": "^2.2.2",
     "@types/node": "^20.8.9",
     "dotenv": "^16.3.1",
-    "node-fetch": "^3.3.2",
-    "typescript": "^5.2.2"
+    "node-fetch": "^3.3.2"
   }
 }
