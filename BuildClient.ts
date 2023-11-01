@@ -1,4 +1,4 @@
-const dontenv = require("dotenv");
+import dontenv from "dotenv";
 
 dontenv.config();
 
