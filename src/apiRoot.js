@@ -1,10 +1,7 @@
-import dotenv from "dotenv";
 import { createApiBuilderFromCtpClient } from "@commercetools/platform-sdk";
 import { createAuthForClientCredentialsFlow, createHttpClient } from "@commercetools/sdk-client-v2";
 import clientObject from "./client.js";
 import { options } from "./options.js";
-
-dotenv.config();
 
 // Configure authMiddlewareOptions
 const authMiddlewareOptions = {
@@ -30,7 +27,5 @@ function getClient(options) {
 }
 
 const apiRoot = createApiBuilderFromCtpClient(getClient(options)).withProjectKey({ projectKey: options.projectKey });
-
-console.log(apiRoot);
 
 export default apiRoot;
