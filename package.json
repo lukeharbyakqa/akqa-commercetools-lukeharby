@@ -37,7 +37,9 @@
     "clean:types": "npm run build && node dist/lib/types.js --clean",
     "start": "npm run build && node dist/lib/data.js --start",
     "lint": "prettier --write ./lib/** && eslint --fix ./lib/**",
-    "api:test": "node ./src/index.js"
+    "api:test": "node ./src/index.js",
+    "actiongroup:test": "node ./src/actionGroup.js",
+    "requestbuilder:test": "node ./src/requestbuilder.js"
   },
   "repository": {
     "type": "git",
