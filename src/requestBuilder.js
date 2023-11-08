@@ -2,9 +2,8 @@ import {
   createRequestBuilder,
   features,
 } from '@commercetools/api-request-builder';
-import { createClient } from '@commercetools/sdk-client'
+import { client } from './helpers/createClient.js';
 import { options } from './config/options.js';
-import { authMiddlewareOptions, httpMiddlewareOptions } from './config/middleware.js';
 
 const config = {
   projectKey: options.projectKey,
@@ -16,10 +15,6 @@ const config = {
     },
   },
 };
-
-const client = createClient({
-  middlewares: [authMiddlewareOptions, httpMiddlewareOptions],
-});
 
 export const requestBuilder = createRequestBuilder(config);
 

@@ -1,16 +1,17 @@
 import { createSyncCategories } from '@commercetools/sync-actions';
-import apiRoot from './apiRoot.js';
+import { client } from './helpers/createClient.js';
 
 const syncCategories = createSyncCategories();
 
 const before = {
   name: { en: 'My Category' }
-}
+};
+
 const now = {
   name: { en: 'My Category', de: 'Meine Kategorie' }
-}
+};
 
-const actions = syncCategories.buildActions(now, before)
+const actions = syncCategories.buildActions(now, before);
 
 const categoriesRequest = {
   uri: `/categories/${before.id}`,
@@ -18,8 +19,6 @@ const categoriesRequest = {
   body: JSON.stringify({ version: before.version, actions }),
 }
 
-// This seems to log the same data as
-// const getEndPoint = () => {} from index.js file
-apiRoot.get().execute(categoriesRequest)
+client.execute(categoriesRequest)
   .then(result => console.log(result))
   .catch(error => console.log(error));

@@ -1,6 +1,6 @@
 import { createApiBuilderFromCtpClient } from "@commercetools/platform-sdk";
 import { createAuthForClientCredentialsFlow, createHttpClient } from "@commercetools/sdk-client-v2";
-import clientObject from "./client.js";
+import clientObject from "./helpers/clientObject.js";
 import { authMiddlewareOptions, httpMiddlewareOptions } from './config/middleware.js'
 import { options } from "./config/options.js";
 

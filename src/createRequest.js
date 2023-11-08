@@ -1,7 +1,6 @@
 import { createRequestBuilder } from '@commercetools/api-request-builder';
-import { createClient } from '@commercetools/sdk-client';
+import { client } from './helpers/createClient.js';
 import { options } from './config/options.js';
-import { authMiddleware, httpMiddleware } from './config/middleware.js';
 
 const projectKey = options.projectKey;
 let uniqueIdCounter = 0;
@@ -20,10 +19,6 @@ const body = {
 };
 
 const service = createRequestBuilder({ projectKey }).channels;
-
-const client = createClient({
-  middlewares: [authMiddleware, httpMiddleware],
-});
 
 const createRequest = {
   uri: service.build(),
