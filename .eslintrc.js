@@ -18,7 +18,7 @@ module.exports = {
     'comma-dangle': ['error', 'never'],
     'no-console': 'error',
     'no-unused-vars': 'error',
-    indent: ['error', 2],
+    indent: ['error', 4],
     'object-curly-spacing': ['error', 'always'],
     'no-sequences': 'error',
     'no-debugger': 'error',

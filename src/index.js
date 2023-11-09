@@ -7,11 +7,21 @@ const getProject = () => {
 };
 
 // Retrieve Project information and output the result to the log
-getProject().then(console.log).catch(console.error);
+const retrieveProjectDetails = (data) => {
+  return getProject()
+    .then(response => {
+      data = response;
+      return data;
+    })
+    .catch(console.error);
+}
 
 const getEndPoint = () => {
-  console.log(apiRoot.me);
+  console.log(`apiRoot.me: ${apiRoot.me}`);
   return apiRoot.me;
 };
 
-getEndPoint();
+export {
+  retrieveProjectDetails,
+  getEndPoint
+};

@@ -1,0 +1,42 @@
+html,
+body {
+  font-family: monospace;
+  font-size: 0.925rem;
+  height: 100%;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 100;
+}
+
+pre {
+  background-color: #f9f9f9;
+  margin-bottom: 3rem;
+}
+
+button {
+  transition: all 200ms ease-in;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+  cursor: pointer;
+  padding: 0.75rem 2rem;
+}
+
+button:hover {
+  transition: all 200ms ease-in;
+  background: #f7f7f7;
+}

@@ -4,6 +4,24 @@
   "description": "[![Build Status](https://travis-ci.org/commercetools/commercetools-sunrise-data.svg?branch=master)](https://travis-ci.org/commercetools/commercetools-sunrise-data)",
   "main": "index.js",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/commercetools/commercetools-sunrise-data.git"
+  },
+  "keywords": [
+    "sunrise",
+    "commercetools",
+    "data"
+  ],
+  "author": "Siawash Shibani",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/commercetools/commercetools-sunrise-data/issues"
+  },
+  "homepage": "https://github.com/commercetools/commercetools-sunrise-data#readme",
+  "engines": {
+    "node": ">=10"
+  },
   "scripts": {
     "test": "eslint ./lib/**",
     "build": "rimraf dist/ && babel ./lib/*.js --out-dir dist/lib/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
@@ -39,24 +57,11 @@
     "lint": "prettier --write ./lib/** && eslint --fix ./lib/**",
     "api:test": "node ./src/index.js",
     "actiongroup:test": "node ./src/actionGroup.js",
-    "requestbuilder:test": "node ./src/requestbuilder.js"
+    "requestbuilder:test": "node ./src/requestbuilder.js",
+    "server": "babel-node ./src/server/index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/commercetools/commercetools-sunrise-data.git"
-  },
-  "keywords": [
-    "sunrise",
-    "commercetools",
-    "data"
-  ],
-  "author": "Siawash Shibani",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/commercetools/commercetools-sunrise-data/issues"
-  },
-  "homepage": "https://github.com/commercetools/commercetools-sunrise-data#readme",
   "devDependencies": {
+    "@babel/node": "^7.22.6",
     "@babel/cli": "^7.7.5",
     "@babel/core": "^7.7.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
@@ -76,13 +81,15 @@
     "braces": "^3.0.2",
     "dotenv": "^10.0.0",
     "eslint": "^7.3.1",
+    "express": "^4.18.2",
     "fstream": "^1.0.12",
     "nconf": "^0.11.4",
     "node-fetch": "^3.3.2",
     "path": "0.12.7",
     "prettier": "^2.0.5",
     "rimraf": "3.0.2",
-    "snazzy": "9.0.0"
+    "snazzy": "9.0.0",
+    "socket.io": "^4.7.1"
   },
   "dependencies": {
     "@commercetools/get-credentials": "^4.0.0",
@@ -94,8 +101,5 @@
     "es6-promise": "^4.2.8",
     "eslint-plugin-import": "^2.20.0",
     "isomorphic-fetch": "^3.0.0"
-  },
-  "engines": {
-    "node": ">=10"
   }
 }
