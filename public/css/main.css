@@ -2,7 +2,6 @@ html,
 body {
   font-family: monospace;
   font-size: 0.925rem;
-  height: 100%;
 }
 
 body {
@@ -25,7 +24,6 @@ h5 {
 
 pre {
   background-color: #f9f9f9;
-  margin-bottom: 3rem;
 }
 
 button {
@@ -39,4 +37,8 @@ button {
 button:hover {
   transition: all 200ms ease-in;
   background: #f7f7f7;
+}
+
+.wrapper {
+  margin-bottom: 3rem;
 }

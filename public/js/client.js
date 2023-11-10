@@ -1,7 +1,7 @@
 const socket = io("ws://localhost:3000");
 
-const getProjectDetails = document.querySelector('.getProjectDetails');
-const details = document.querySelector('.details');
+const getProjectDetails = document.querySelector('.projectDetails');
+const details = document.querySelector('.detailsProjectDetails');
 
 getProjectDetails.addEventListener('click', () => {
   const target = new Date();
