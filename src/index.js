@@ -1,4 +1,9 @@
+import dotenv from 'dotenv';
 import apiRoot from "./apiRoot.js";
+
+dotenv.config();
+
+let isNodeEnv = process.env.NODE_ENV;
 
 // Example call to return Project information
 // This code has the same effect as sending a GET request to the commercetools Composable Commerce API without any endpoints.
@@ -14,12 +19,18 @@ const retrieveProjectDetails = (data) => {
       return data;
     })
     .catch(console.error);
-}
+};
 
 const getEndPoint = () => {
-  console.log(`apiRoot.me: ${apiRoot.me}`);
+  console.log(`apiRoot.me`);
+  console.log(apiRoot.me);
   return apiRoot.me;
 };
+
+
+if (isNodeEnv === 'production') {
+  getEndPoint();
+}
 
 export {
   retrieveProjectDetails,

@@ -13,12 +13,27 @@ const now = {
 
 const actions = syncCategories.buildActions(now, before);
 
+// before.id returns undefined
 const categoriesRequest = {
   uri: `/categories/${before.id}`,
   method: 'POST',
   body: JSON.stringify({ version: before.version, actions }),
 }
 
-client.execute(categoriesRequest)
-  .then(result => console.log(result))
-  .catch(error => console.log(error));
+const execActionsGroup = () => {
+  return client.execute(categoriesRequest)
+    .then(result => console.log(result))
+    .catch(error => console.log(error));
+}
+
+const retrieveActionsGroup = (data) => {
+  return execActionsGroup()
+    .then(response => {
+      data = response;
+      return data;
+  })
+  .catch(console.error);
+}
+
+// currently returns a 404
+export { retrieveActionsGroup };

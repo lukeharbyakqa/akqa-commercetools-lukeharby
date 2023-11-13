@@ -1,6 +1,11 @@
+import dotenv from 'dotenv';
 import { createRequestBuilder } from '@commercetools/api-request-builder';
 import { client } from './helpers/createClient.js';
 import { options } from './config/options.js';
+
+dotenv.config();
+
+let isNodeEnv = process.env.NODE_ENV;
 
 const projectKey = options.projectKey;
 let uniqueIdCounter = 0;
@@ -30,9 +35,29 @@ const createRequest = {
   },
 };
 
-client.execute(createRequest)
-  .then((response) => {
-    channelResponse = response.body;
-    console.log(channelResponse);
-  })
-  .catch(error => console.log(error));
+const getCreateRequest = () => {
+  return client.execute(createRequest)
+    .then(response => {
+       return response;
+    })
+    .catch(error => console.log(error));
+};
+
+const retrieveCreateRequest = (data) => {
+  return getCreateRequest()
+    .then(response => {
+      data = response;
+      console.log(data);
+      return data;
+    })
+    .catch(error => console.log(error));
+};
+
+
+if (isNodeEnv === 'production') {
+  retrieveCreateRequest();
+}
+
+export {
+  retrieveCreateRequest
+}

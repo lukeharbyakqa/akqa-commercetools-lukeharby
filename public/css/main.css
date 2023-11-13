@@ -42,3 +42,8 @@ button:hover {
 .wrapper {
   margin-bottom: 3rem;
 }
+
+.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
