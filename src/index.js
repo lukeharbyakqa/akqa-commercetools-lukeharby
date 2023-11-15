@@ -1,9 +1,5 @@
-import dotenv from 'dotenv';
 import apiRoot from "./apiRoot.js";
-
-dotenv.config();
-
-let isNodeEnv = process.env.NODE_ENV;
+import { isNodeEnv } from './config/environment.js';
 
 // Example call to return Project information
 // This code has the same effect as sending a GET request to the commercetools Composable Commerce API without any endpoints.

@@ -59,6 +59,7 @@
     "apiroot:test": "node ./src/apiRoot.js",
     "actiongroup:test": "node ./src/actionGroup.js",
     "requestbuilder:test": "node ./src/requestbuilder.js",
+    "getcategories:test": "node ./src/getcategories.js",
     "test:node": "node ./src/test.js",
     "test:server": "set NODE_ENV=development&& node ./src/test.js",
     "server": "set NODE_ENV=development&& babel-node ./src/server/index.js"

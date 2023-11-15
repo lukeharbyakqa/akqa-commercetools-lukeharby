@@ -4,10 +4,7 @@ import { createAuthForClientCredentialsFlow, createHttpClient } from "@commercet
 import clientObject from "./helpers/clientObject.js";
 import { authMiddlewareOptions, httpMiddlewareOptions } from './config/middleware.js'
 import { options } from "./config/options.js";
-
-dotenv.config();
-
-let isNodeEnv = process.env.NODE_ENV;
+import { isNodeEnv } from './config/environment.js';
 
 function getClient(options) {
   const client = clientObject.withProjectKey(options.projectKey).withMiddleware(createAuthForClientCredentialsFlow(authMiddlewareOptions)).withMiddleware(createHttpClient(httpMiddlewareOptions)).withUserAgentMiddleware().build();
@@ -38,3 +35,8 @@ if (isNodeEnv === 'production') {
 }
 
 export default apiRoot;
+
+export {
+  apiRoot,
+  getApiRoot
+}

@@ -1,11 +1,7 @@
-import dotenv from 'dotenv';
 import { createRequestBuilder } from '@commercetools/api-request-builder';
 import { client } from './helpers/createClient.js';
 import { options } from './config/options.js';
-
-dotenv.config();
-
-let isNodeEnv = process.env.NODE_ENV;
+import { isNodeEnv } from './config/environment.js';
 
 const projectKey = options.projectKey;
 let uniqueIdCounter = 0;

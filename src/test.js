@@ -1,12 +1,9 @@
-import dotenv from 'dotenv';
-
-dotenv.config();
+import { isNodeEnv } from './config/environment.js';
 
 const doProdFunc = () => console.log('Production only');
 
 const doDevFunc = () => console.log('Development only');
 
-let isNodeEnv = process.env.NODE_ENV;
 console.log(isNodeEnv);
 console.log(process.env.NODE_ENV);
 

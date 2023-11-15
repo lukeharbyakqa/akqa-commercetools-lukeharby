@@ -1,5 +1,6 @@
 import { createSyncCategories } from '@commercetools/sync-actions';
 import { client } from './helpers/createClient.js';
+import { isNodeEnv } from './config/environment.js';
 
 const syncCategories = createSyncCategories();
 
@@ -33,6 +34,10 @@ const retrieveActionsGroup = (data) => {
       return data;
   })
   .catch(console.error);
+}
+
+if (isNodeEnv === 'production') {
+  retrieveActionsGroup();
 }
 
 // currently returns a 404
