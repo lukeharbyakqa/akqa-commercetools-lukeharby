@@ -1,4 +1,3 @@
-import dotenv from 'dotenv';
 import { createApiBuilderFromCtpClient } from "@commercetools/platform-sdk";
 import { createAuthForClientCredentialsFlow, createHttpClient } from "@commercetools/sdk-client-v2";
 import clientObject from "./helpers/clientObject.js";
