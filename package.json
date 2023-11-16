@@ -61,6 +61,7 @@
     "requestbuilder:test": "node ./src/requestbuilder.js",
     "getproducts:test": "node ./src/getProducts.js",
     "getproducttypes:test": "node ./src/getProductTypes.js",
+    "importer:test": "node ./src/import/categoryImporter.js",
     "test:node": "node ./src/test.js",
     "test:server": "set NODE_ENV=development&& node ./src/test.js",
     "server": "set NODE_ENV=development&& babel-node ./src/server/index.js"
@@ -97,6 +98,7 @@
     "socket.io": "^4.7.1"
   },
   "dependencies": {
+    "@commercetools/category-exporter": "^4.0.0",
     "@commercetools/get-credentials": "^4.0.0",
     "@commercetools/sdk-auth": "^3.0.7",
     "@commercetools/sync-actions": "^5.15.0",
