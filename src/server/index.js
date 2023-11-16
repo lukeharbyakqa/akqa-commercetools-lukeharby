@@ -6,6 +6,8 @@ import { retrieveProjectDetails } from '../index.js';
 import { retriveApi } from '../apiRoot.js';
 import { retrieveActionsGroup } from "../actionGroup.js";
 import { retrieveCreateRequest } from "../createRequest.js";
+import { retrieveProducts } from '../getProducts.js';
+import { retrieveProductTypes } from "../getProductTypes.js";
 
 const PORT = 8080;
 const SOCKET_PORT = 3000;
@@ -31,7 +33,7 @@ io.on('connection', (socket) => {
       .then(responseData => {
         io.emit('sendApiRoot', responseData);
         console.log(`server: sending sendApiRoot`);
-      })
+      });
   });
 
   // Actions group
@@ -49,7 +51,25 @@ io.on('connection', (socket) => {
       .then(responseData => {
         io.emit('sendCreateRequest', responseData);
         console.log(`server: sending sendCreateRequest`);
-      })
+      });
+  });
+
+  // Products
+  socket.on('getProducts', (data) => {
+    retrieveProducts(data)
+      .then(responseData => {
+        io.emit('sendProducts', responseData);
+        console.log(`server: sending products`);
+      });
+  });
+
+  // Product types
+  socket.on('getProductTypes', (data) => {
+    retrieveProductTypes(data)
+      .then(responseData => {
+        io.emit('sendProductTypes', responseData);
+        console.log(`server: sending productTyes`);
+      });
   });
 
   socket.on('disconnect', () => {

@@ -8,6 +8,10 @@ const actionsGroup = document.querySelector('.actionsGroup');
 const detailsActionsGroup = document.querySelector('.detailsActionsGroup');
 const createRequest = document.querySelector('.createRequest');
 const detailsCreateRequest = document.querySelector('.detailsCreateRequest');
+const products = document.querySelector('.products');
+const detailsProducts = document.querySelector('.detailsProducts');
+const productTypes = document.querySelector('.productTypes');
+const detailsProductTypes = document.querySelector('.detailsProductTypes');
 
 const target = new Date();
 
@@ -46,4 +50,22 @@ createRequest.addEventListener('click', () => {
 
 socket.on('sendCreateRequest', (data) => {
   detailsCreateRequest.textContent = JSON.stringify(data.body, null, 4);
+});
+
+// Products
+products.addEventListener('click', () => {
+  socket.emit('getProducts', target);
+});
+
+socket.on('sendProducts', (data) => {
+  detailsProducts.textContent = JSON.stringify(data.body, null, 4);
+});
+
+// Product types
+productTypes.addEventListener('click', () => {
+  socket.emit('getProductTypes', target);
+});
+
+socket.on('sendProductTypes', (data) => {
+  detailsProductTypes.textContent = JSON.stringify(data.body, null, 4);
 });
