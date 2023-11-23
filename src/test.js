@@ -1,16 +1,22 @@
-import { isNodeEnv } from './config/environment.js';
+import { client } from './helpers/createClient.js';
 
-const doProdFunc = () => console.log('Production only');
+const request = {
+  uri: '/me',
+  method: 'GET',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+}
 
-const doDevFunc = () => console.log('Development only');
+const retrieveClient = () => {
+  return client.execute(request)
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
+};
 
-console.log(isNodeEnv);
-console.log(process.env.NODE_ENV);
+retrieveClient();
 
-if (isNodeEnv === 'production') {
-  doProdFunc();
-} else if (isNodeEnv === 'development') {
-  doDevFunc();
-} else {
-  console.log('isNodeEnv is another value');
+export {
+  retrieveClient
 }

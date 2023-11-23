@@ -101,6 +101,7 @@
     "@commercetools/category-exporter": "^4.0.0",
     "@commercetools/get-credentials": "^4.0.0",
     "@commercetools/sdk-auth": "^3.0.7",
+    "@commercetools/sdk-middleware-logger": "^3.0.0",
     "@commercetools/sync-actions": "^5.15.0",
     "cli-progress": "^3.4.0",
     "core-js": "3",

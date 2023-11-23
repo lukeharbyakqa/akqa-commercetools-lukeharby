@@ -9,6 +9,8 @@ const options = {
   secret: process.env.CLIENT_SECRET,
   apiURL: process.env.API_URL,
   authURL: process.env.AUTH_URL,
+  importURL: process.env.IMPORT_URL,
+  accessToken: process.env.ACCESS_TOKEN
 };
 
 export { options };

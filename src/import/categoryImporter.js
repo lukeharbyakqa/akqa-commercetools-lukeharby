@@ -6,14 +6,14 @@ const optionsImporter = {
   apiConfig: {
     apiUrl: options.apiURL,
     host: options.authURL,
-    project_key: options.projectKey,
+    projectKey: options.projectKey,
     credentials: {
       clientId: options.clientID,
-      clientSecret: options.clientSecret
+      clientSecret: options.secret
     }
   },
-  accessToken: '123456xxxx0987654321',
-  predicate: 'key="my-desired-key"'
+  accessToken: options.accessToken,
+  predicate: 'key=""'
 };
 
 const logger = {
@@ -23,7 +23,11 @@ const logger = {
   debug: console.debug,
 };
 
-const categoryExporter = new CategoryExporter(optionsImporter, logger);
+const outputStream = fs.createWriteStream('./logs/log.json');
+
+const categoryExporter = new CategoryExporter.default(optionsImporter, logger);
+
+const errorHandler = () => console.log('error');
 
 // Register error listener
 outputStream.on('error', errorHandler);
