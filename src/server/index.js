@@ -1,19 +1,33 @@
-import express from "express";
+import express from 'express';
 const app = express();
 
-import { Server } from "socket.io";
+import { Server } from 'socket.io';
 import { retrieveProjectDetails } from '../index.js';
 import { retriveApi } from '../apiRoot.js';
-import { retrieveActionsGroup } from "../actionGroup.js";
-import { retrieveCreateRequest } from "../createRequest.js";
+import { retrieveActionsGroup } from '../actionGroup.js';
+import { retrieveCreateRequest } from '../createRequest.js';
 import { retrieveProducts } from '../getProducts.js';
-import { retrieveProductTypes } from "../getProductTypes.js";
+import { retrieveProductTypes } from '../getProductTypes.js';
 
 const PORT = 8080;
 const SOCKET_PORT = 3000;
 const io = new Server(SOCKET_PORT);
 
-app.use(express.static("public"));
+app.use(express.static('public'));
+
+app.use(express.json());
+
+app.post('/api/extension', (req, res) => {
+  console.log('receiving data ...');
+  console.log('body is ', req.body);
+  const responseObject = {
+    message: "Response from server: Thank you and have a great day",
+    status: 200,
+    body: req.body
+  }
+  res.send(responseObject);
+  res.end();
+});
 
 io.on('connection', (socket) => {
   console.log('server: a user connected');

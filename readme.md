@@ -31,6 +31,16 @@ npm install
 
 ![The .env file in Visual Studio Code](https://user-images.githubusercontent.com/77231096/172971883-372d4fdd-9d50-4711-ab57-36a0c38c6774.png)
 
+## Node set up
+
+You need to use a version of node that supports fetch. Currently tested with `node ^18`. (We recommend using nvm to switch between node versions)
+
+Use [NVM](http://npm.github.io/installation-setup-docs/installing/using-a-node-version-manager.html) in order to switch node versions.
+
+- `nvm current` check current node version
+- `nvm list` check node versions installed
+- `nvm use 14` switch to node 14 (you have to choose an explicit version on Windows 14.18.0 for example)
+
 ## Commands
 
 1. Clean all existing Project data and import new:
@@ -67,3 +77,14 @@ npm install
     ```
         npm run import:customers
     ```
+
+
+### Running a client instance
+
+  ```
+    npm run server
+  ```
+
+This will open port 8080 on [localhost:8080](http://localhost:8080) and you can test various endpoints are returning data using [socket.io](https://socket.io/).
+
+Requires a CORS extension. For [Firefox, Chrome and Opera](https://mybrowseraddon.com/access-control-allow-origin.html)

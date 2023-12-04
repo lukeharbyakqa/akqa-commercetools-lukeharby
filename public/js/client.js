@@ -12,8 +12,12 @@ const products = document.querySelector('.products');
 const detailsProducts = document.querySelector('.detailsProducts');
 const productTypes = document.querySelector('.productTypes');
 const detailsProductTypes = document.querySelector('.detailsProductTypes');
+const trigger = document.querySelector('.trigger');
+const triggerOptionsRequest = document.querySelector('.triggerOptionsRequest');
+const triggerOptionsResponse = document.querySelector('.triggerOptionsResponse');
 
 const target = new Date();
+let data;
 
 // Project details
 projectDetails.addEventListener('click', () => {
@@ -69,3 +73,33 @@ productTypes.addEventListener('click', () => {
 socket.on('sendProductTypes', (data) => {
   detailsProductTypes.textContent = JSON.stringify(data.body, null, 4);
 });
+
+// Send post data to endpoint
+trigger.addEventListener('click', () => {
+  data = {
+    date: target,
+    trigger: trigger
+  }
+  updateClient(data);
+});
+
+const updateClient = (postData) => {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(postData)
+  }
+
+  triggerOptionsRequest.textContent = JSON.stringify(postData, null, 4);
+
+  fetch('/api/extension', options, (error, response) => {
+      console.log(`error: ${error}`);
+      console.log(`response.body ${response.body}`);
+  })
+    .then(response => response.json())
+    .then(response =>
+      triggerOptionsResponse.textContent = JSON.stringify(response, null, 4)
+    );
+};
