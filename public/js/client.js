@@ -12,6 +12,8 @@ const products = document.querySelector('.products');
 const detailsProducts = document.querySelector('.detailsProducts');
 const productTypes = document.querySelector('.productTypes');
 const detailsProductTypes = document.querySelector('.detailsProductTypes');
+const carts = document.querySelector('.carts');
+const detailsCarts = document.querySelector('.detailsCarts');
 const extensions = document.querySelector('.extensions');
 const detailsExtensions = document.querySelector('.detailsExtensions');
 const trigger = document.querySelector('.trigger');
@@ -78,6 +80,28 @@ productTypes.addEventListener('click', () => {
 
 socket.on('sendProductTypes', (data) => {
   appendData(detailsProductTypes, data.body);
+});
+
+// Carts
+carts.addEventListener('click', () => {
+  socket.emit('getCarts', target);
+});
+
+socket.on('sendCarts', (data) => {
+  appendData(detailsCarts, data.body);
+  const results = data.body?.results;
+  let eaItem = [];
+  const lineItems = results.filter(item => {
+    eaItem = item.lineItems;
+    return eaItem;
+  });
+  let quantity;
+  let amount;
+  eaItem.filter(item => {
+    quantity = item?.quantity;
+    amount = item?.price?.value?.centAmount;
+  });
+  console.log(quantity * amount);
 });
 
 // Extensions

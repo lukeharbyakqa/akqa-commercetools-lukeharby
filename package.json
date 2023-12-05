@@ -61,6 +61,7 @@
     "requestbuilder:test": "node ./src/requestbuilder.js",
     "getproducts:test": "node ./src/getProducts.js",
     "getproducttypes:test": "node ./src/getProductTypes.js",
+    "getcarts:test": "node ./src/getCarts.js",
     "importer:test": "node ./src/import/categoryImporter.js",
     "getextensions:test": "node ./src/getExtensions.js",
     "test:node": "node ./src/test.js",

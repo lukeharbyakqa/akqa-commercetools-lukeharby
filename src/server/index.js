@@ -8,9 +8,10 @@ import { retrieveActionsGroup } from '../actionGroup.js';
 import { retrieveCreateRequest } from '../createRequest.js';
 import { retrieveProducts } from '../getProducts.js';
 import { retrieveProductTypes } from '../getProductTypes.js';
+import { retrieveCarts } from '../getCarts.js';
 import { retrieveExtensions } from '../getExtensions.js';
 
-const PORT = 8080;
+const PORT = 8001;
 const SOCKET_PORT = 3000;
 const io = new Server(SOCKET_PORT);
 
@@ -88,14 +89,23 @@ io.on('connection', (socket) => {
       });
   });
 
-    // Extensions
-    socket.on('getExtensions', (data) => {
-      retrieveExtensions(data)
-        .then(responseData => {
-          io.emit('sendExtensions', responseData);
-          console.log(`server: sending extensions`);
-        });
-    });
+  // Carts
+  socket.on('getCarts', (data) => {
+    retrieveCarts(data)
+      .then(responseData => {
+        io.emit('sendCarts', responseData);
+        console.log(`server: sending carts`);
+      })
+  });
+
+  // Extensions
+  socket.on('getExtensions', (data) => {
+    retrieveExtensions(data)
+      .then(responseData => {
+        io.emit('sendExtensions', responseData);
+        console.log(`server: sending extensions`);
+      });
+  });
 
   socket.on('disconnect', () => {
     console.log('server: user disconnected');
