@@ -8,6 +8,7 @@ import { retrieveActionsGroup } from '../actionGroup.js';
 import { retrieveCreateRequest } from '../createRequest.js';
 import { retrieveProducts } from '../getProducts.js';
 import { retrieveProductTypes } from '../getProductTypes.js';
+import { retrieveExtensions } from '../getExtensions.js';
 
 const PORT = 8080;
 const SOCKET_PORT = 3000;
@@ -23,6 +24,7 @@ app.post('/api/extension', (req, res) => {
   const responseObject = {
     message: "Response from server: Thank you and have a great day",
     status: 200,
+    currentDate: new Date(),
     body: req.body
   }
   res.send(responseObject);
@@ -85,6 +87,15 @@ io.on('connection', (socket) => {
         console.log(`server: sending productTyes`);
       });
   });
+
+    // Extensions
+    socket.on('getExtensions', (data) => {
+      retrieveExtensions(data)
+        .then(responseData => {
+          io.emit('sendExtensions', responseData);
+          console.log(`server: sending extensions`);
+        });
+    });
 
   socket.on('disconnect', () => {
     console.log('server: user disconnected');

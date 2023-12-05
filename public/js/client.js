@@ -12,6 +12,8 @@ const products = document.querySelector('.products');
 const detailsProducts = document.querySelector('.detailsProducts');
 const productTypes = document.querySelector('.productTypes');
 const detailsProductTypes = document.querySelector('.detailsProductTypes');
+const extensions = document.querySelector('.extensions');
+const detailsExtensions = document.querySelector('.detailsExtensions');
 const trigger = document.querySelector('.trigger');
 const triggerOptionsRequest = document.querySelector('.triggerOptionsRequest');
 const triggerOptionsResponse = document.querySelector('.triggerOptionsResponse');
@@ -19,13 +21,18 @@ const triggerOptionsResponse = document.querySelector('.triggerOptionsResponse')
 const target = new Date();
 let data;
 
+const appendData = (target, data) => {
+  target.textContent = JSON.stringify(data, null, 4);
+}
+
 // Project details
 projectDetails.addEventListener('click', () => {
   socket.emit('getProjectDetails', target);
 });
 
 socket.on('sendProjectDetails', (data) => {
-  detailsProjectDetails.textContent = JSON.stringify(data.body, null, 4);
+  appendData(detailsProjectDetails, data.body);
+  // detailsProjectDetails.textContent = JSON.stringify(data.body, null, 4);
 });
 
 // API Root
@@ -35,7 +42,8 @@ apiRoot.addEventListener('click', () => {
 
 socket.on('sendApiRoot', (data) => {
   console.log(`client: received sendApiRoot from server`);
-  detailsApiRoot.textContent = JSON.stringify(data, null, 4);
+  appendData(detailsApiRoot, data);
+  // detailsApiRoot.textContent = JSON.stringify(data, null, 4);
 });
 
 // Actions group
@@ -44,7 +52,8 @@ actionsGroup.addEventListener('click', () => {
 });
 
 socket.on('sendActionsGroup', (data) => {
-  detailsActionsGroup.textContent = JSON.stringify(data.body, null, 4);
+  appendData(detailsActionsGroup, data.body);
+  // detailsActionsGroup.textContent = JSON.stringify(data.body, null, 4);
 });
 
 // Request builder
@@ -53,7 +62,8 @@ createRequest.addEventListener('click', () => {
 });
 
 socket.on('sendCreateRequest', (data) => {
-  detailsCreateRequest.textContent = JSON.stringify(data.body, null, 4);
+  appendData(detailsCreateRequest, data.body);
+  // detailsCreateRequest.textContent = JSON.stringify(data.body, null, 4);
 });
 
 // Products
@@ -62,7 +72,8 @@ products.addEventListener('click', () => {
 });
 
 socket.on('sendProducts', (data) => {
-  detailsProducts.textContent = JSON.stringify(data.body, null, 4);
+  appendData(detailsProducts, data.body);
+  // detailsProducts.textContent = JSON.stringify(data.body, null, 4);
 });
 
 // Product types
@@ -71,7 +82,18 @@ productTypes.addEventListener('click', () => {
 });
 
 socket.on('sendProductTypes', (data) => {
-  detailsProductTypes.textContent = JSON.stringify(data.body, null, 4);
+  appendData(detailsProductTypes, data.body);
+  // detailsProductTypes.textContent = JSON.stringify(data.body, null, 4);
+});
+
+// Extensions
+extensions.addEventListener('click', () => {
+  socket.emit('getExtensions', target);
+});
+
+socket.on('sendExtensions', (data) => {
+  appendData(detailsExtensions, data.body);
+  // detailsExtensions.textContent = JSON.stringify(data.body, null, 4);
 });
 
 // Send post data to endpoint
