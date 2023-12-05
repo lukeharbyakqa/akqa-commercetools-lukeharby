@@ -32,7 +32,6 @@ projectDetails.addEventListener('click', () => {
 
 socket.on('sendProjectDetails', (data) => {
   appendData(detailsProjectDetails, data.body);
-  // detailsProjectDetails.textContent = JSON.stringify(data.body, null, 4);
 });
 
 // API Root
@@ -43,7 +42,6 @@ apiRoot.addEventListener('click', () => {
 socket.on('sendApiRoot', (data) => {
   console.log(`client: received sendApiRoot from server`);
   appendData(detailsApiRoot, data);
-  // detailsApiRoot.textContent = JSON.stringify(data, null, 4);
 });
 
 // Actions group
@@ -53,7 +51,6 @@ actionsGroup.addEventListener('click', () => {
 
 socket.on('sendActionsGroup', (data) => {
   appendData(detailsActionsGroup, data.body);
-  // detailsActionsGroup.textContent = JSON.stringify(data.body, null, 4);
 });
 
 // Request builder
@@ -63,7 +60,6 @@ createRequest.addEventListener('click', () => {
 
 socket.on('sendCreateRequest', (data) => {
   appendData(detailsCreateRequest, data.body);
-  // detailsCreateRequest.textContent = JSON.stringify(data.body, null, 4);
 });
 
 // Products
@@ -73,7 +69,6 @@ products.addEventListener('click', () => {
 
 socket.on('sendProducts', (data) => {
   appendData(detailsProducts, data.body);
-  // detailsProducts.textContent = JSON.stringify(data.body, null, 4);
 });
 
 // Product types
@@ -83,7 +78,6 @@ productTypes.addEventListener('click', () => {
 
 socket.on('sendProductTypes', (data) => {
   appendData(detailsProductTypes, data.body);
-  // detailsProductTypes.textContent = JSON.stringify(data.body, null, 4);
 });
 
 // Extensions
@@ -93,7 +87,6 @@ extensions.addEventListener('click', () => {
 
 socket.on('sendExtensions', (data) => {
   appendData(detailsExtensions, data.body);
-  // detailsExtensions.textContent = JSON.stringify(data.body, null, 4);
 });
 
 // Send post data to endpoint
@@ -114,7 +107,7 @@ const updateClient = (postData) => {
     body: JSON.stringify(postData)
   }
 
-  triggerOptionsRequest.textContent = JSON.stringify(postData, null, 4);
+  appendData(triggerOptionsRequest, postData);
 
   fetch('/api/extension', options, (error, response) => {
       console.log(`error: ${error}`);
@@ -122,6 +115,6 @@ const updateClient = (postData) => {
   })
     .then(response => response.json())
     .then(response =>
-      triggerOptionsResponse.textContent = JSON.stringify(response, null, 4)
+      appendData(triggerOptionsResponse, response)
     );
 };
